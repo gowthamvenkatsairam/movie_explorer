@@ -48,7 +48,7 @@ A "Movie Explorer" web app where users can search movies, view details, and save
 
 ## Deployment
 
-This app is ready to be deployed on [Vercel](https://vercel.com).
+This app is ready to be deployed on [Vercel](https://movie-explorer-theta-nine.vercel.app/).
 
 1.  Push the code to a GitHub repository.
 2.  Import the project into Vercel.
