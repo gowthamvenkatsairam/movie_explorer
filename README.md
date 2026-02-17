@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Movie Explorer
 
-## Getting Started
+A "Movie Explorer" web app where users can search movies, view details, and save favorites with a personal rating/comment.
 
-First, run the development server:
+## Setup Instructions
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+1.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.  **Environment Setup**
+    Create a `.env.local` file in the root directory and add your TMDB API Key:
+    ```bash
+    TMDB_API_KEY=your_tmdb_api_key_here
+    ```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+3.  **Run the Development Server**
+    ```bash
+    npm run dev
+    ```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+4.  **Open the App**
+    Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Features
 
-## Learn More
+-   **Search**: Search movies by title. Displays results with poster, title, year, and short description.
+-   **Details**: View detailed information including overview, release year, runtime, and rating.
+-   **Favorites**: Add movies to your favorites list. All data is persisted in LocalStorage.
+-   **Personalization**: Rate favorites (1-5 stars) and add personal notes.
+-   **API Integration**: Uses TMDB API via a secure Next.js API proxy to keep credentials safe.
 
-To learn more about Next.js, take a look at the following resources:
+## Technical Decisions & Tradeoffs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   **Framework**: Built with **Next.js 12** and **React 18** to ensure compatibility with Node.js 14 environments while leveraging React's modern features.
+-   **Styling**: Used **Vanilla CSS (styled-jsx)** for scoped component styling, offering full control without external CSS framework dependencies.
+-   **State Management**: Used React `useState` and `useContext` (via hooks) for local state properly scoped to components.
+-   **Persistence**: Implemented **LocalStorage** for favorites persistence implementation as a lightweight client-side solution.
+-   **API Proxy**: Server-side API routes (`/api/movies/*`) are used to proxy requests to TMDB, ensuring the API key is never exposed to the client.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Known Limitations & Future Improvements
 
-## Deploy on Vercel
+-   **Pagination**: Currently only fetches the first page of search results. Implementing pagination would allow users to browse more results.
+-   **Server-Side Persistence**: Favorites are only saved on the device. Adding a lightweight database (e.g., SQLite, Supabase) would allow syncing across devices.
+-   **Testing**: No automated tests included due to time constraints. Adding Unit and E2E tests would be the next step.
+-   **Authentication**: No user accounts; data is tied to the browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This app is ready to be deployed on [Vercel](https://vercel.com).
+
+1.  Push the code to a GitHub repository.
+2.  Import the project into Vercel.
+3.  Add the `TMDB_API_KEY` environment variable in the Vercel dashboard.
+4.  Deploy.
